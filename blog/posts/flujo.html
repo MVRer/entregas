@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flujos de trabajo de GIT</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div id="tituloydesc">
+        <h1>Flujos de trabajo de GIT</h1>
+        <p>En este post te enseñaré el flujo de trabajo de GIT, un sistema de control de versiones que ayuda a llevar un registro de los cambios en tu código y colaborar con otros desarrolladores.</p>
+    </div>
+
+    <div id="contenido">
+        <h2>Comandos básicos de GIT</h2>
+        <p>Estos son los comandos fundamentales que se utilizan en el día a día con Git:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Comando</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>git init</td>
+                    <td>Inicializa un nuevo repositorio</td>
+                </tr>
+                <tr>
+                    <td>git clone</td>
+                    <td>Crea una copia local de un repositorio remoto</td>
+                </tr>
+                <tr>
+                    <td>git add</td>
+                    <td>Añade archivos al área de preparación</td>
+                </tr>
+                <tr>
+                    <td>git commit</td>
+                    <td>Guarda los cambios en el repositorio local</td>
+                </tr>
+                <tr>
+                    <td>git push</td>
+                    <td>Envía los cambios al repositorio remoto</td>
+                </tr>
+                <tr>
+                    <td>git pull</td>
+                    <td>Obtiene cambios del repositorio remoto</td>
+                </tr>
+                <tr>
+                    <td>git checkout</td>
+                    <td>Cambia entre ramas o restaura archivos</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Flujo de trabajo básico</h2>
+        <ol>
+            <li><strong>Clonar el repositorio:</strong> <code>git clone https://github.com/usuario/proyecto.git</code></li>
+            <li><strong>Crear una rama:</strong> <code>git checkout -b nueva-funcionalidad</code></li>
+            <li><strong>Añadir cambios:</strong> <code>git add .</code> (añade todos los archivos modificados)</li>
+            <li><strong>Confirmar cambios:</strong> <code>git commit -m "Descripción de los cambios"</code></li>
+            <li><strong>Subir cambios:</strong> <code>git push origin nueva-funcionalidad</code></li>
+        </ol>
+
+        <h3>Git Add explicado</h3>
+        <p>El comando <code>git add</code> mueve los archivos modificados al área de preparación (staging). Es como una "sala de espera" antes de confirmar definitivamente los cambios.</p>
+        <p>Ejemplos de uso:</p>
+        <ul>
+            <li><code>git add archivo.html</code> - Añade un archivo específico</li>
+            <li><code>git add *.css</code> - Añade todos los archivos CSS modificados</li>
+            <li><code>git add .</code> - Añade todos los archivos modificados</li>
+        </ul>
+
+        <h3>Git Checkout explicado</h3>
+        <p>Este comando es muy versátil y permite:</p>
+        <ul>
+            <li>Cambiar entre ramas: <code>git checkout nombre-rama</code></li>
+            <li>Crear y cambiar a una nueva rama: <code>git checkout -b nueva-rama</code></li>
+            <li>Descartar cambios en un archivo: <code>git checkout -- archivo.txt</code></li>
+        </ul>
+
+        <h3>Pull Requests</h3>
+        <p>Los Pull Requests son una característica de plataformas como GitHub que permiten revisar código antes de fusionarlo:</p>
+        <ol>
+            <li>Hacer push de tu rama: <code>git push origin tu-rama</code></li>
+            <li>En GitHub, ir a "Pull requests" → "New pull request"</li>
+            <li>Seleccionar la rama base (main) y la rama con tus cambios</li>
+            <li>Añadir título y descripción</li>
+            <li>Crear el pull request</li>
+        </ol>
+        <p>Después de la revisión, el código puede ser fusionado a la rama principal.</p>
+
+        <h2>Flujos de trabajo comunes</h2>
+        <h3>Gitflow</h3>
+        <p>Un modelo de ramificación con ramas específicas:</p>
+        <ul>
+            <li><strong>master/main:</strong> Código de producción estable</li>
+            <li><strong>develop:</strong> Rama de integración</li>
+            <li><strong>feature/*:</strong> Nuevas funcionalidades</li>
+            <li><strong>release/*:</strong> Preparación para release</li>
+            <li><strong>hotfix/*:</strong> Correcciones rápidas</li>
+        </ul>
+
+        <h3>GitHub Flow</h3>
+        <p>Un flujo más simple:</p>
+        <ol>
+            <li>Crear una rama desde main</li>
+            <li>Hacer cambios y commits</li>
+            <li>Abrir un Pull Request</li>
+            <li>Revisar y discutir</li>
+            <li>Fusionar a main</li>
+        </ol>
+    </div>
+
+    <div id="footer">
+        <a href="/entregas/index.html">Volver a la página principal</a>
+    </div>
+
+</body>
+</html>

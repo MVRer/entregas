@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comandos de terminal</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div id="tituloydesc">
+        <h1>Comandos de terminal</h1>
+        <p>En este post te enseñaré algunos comandos de terminal útiles vistos en clase.</p>
+    </div>
+
+    <div id="contenido">
+        <h2>Comandos básicos de Linux</h2>
+        <p>La siguiente tabla muestra los comandos más utilizados en Linux:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Comando</th>
+                    <th>Descripción</th>
+                    <th>Ejemplos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>pwd</code></td>
+                    <td>Muestra la ruta del directorio actual</td>
+                    <td><code>pwd</code> → /home/usuario/documentos</td>
+                </tr>
+                <tr>
+                    <td><code>ls</code></td>
+                    <td>Lista los archivos y directorios</td>
+                    <td>
+                        <code>ls</code> - Lista básica<br>
+                        <code>ls -l</code> - Formato largo<br>
+                        <code>ls -a</code> - Muestra archivos ocultos
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>cd</code></td>
+                    <td>Cambia de directorio</td>
+                    <td>
+                        <code>cd documentos</code> - Ir a documentos<br>
+                        <code>cd ..</code> - Ir al directorio padre<br>
+                        <code>cd ~</code> - Ir al directorio home
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>mkdir</code></td>
+                    <td>Crea un nuevo directorio</td>
+                    <td>
+                        <code>mkdir proyecto</code> - Crea directorio "proyecto"<br>
+                        <code>mkdir -p a/b/c</code> - Crea estructura de directorios
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>touch</code></td>
+                    <td>Crea un archivo vacío o actualiza la fecha de modificación</td>
+                    <td>
+                        <code>touch archivo.txt</code> - Crea archivo vacío<br>
+                        <code>touch {1..5}.txt</code> - Crea 5 archivos numerados
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>cp</code></td>
+                    <td>Copia archivos o directorios</td>
+                    <td>
+                        <code>cp archivo.txt copia.txt</code><br>
+                        <code>cp -r directorio nuevo_dir</code> - Copia recursivamente
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>mv</code></td>
+                    <td>Mueve o renombra archivos o directorios</td>
+                    <td>
+                        <code>mv archivo.txt nuevo.txt</code> - Renombra<br>
+                        <code>mv archivo.txt ~/documentos/</code> - Mueve
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>rm</code></td>
+                    <td>Elimina archivos o directorios</td>
+                    <td>
+                        <code>rm archivo.txt</code> - Elimina archivo<br>
+                        <code>rm -r directorio</code> - Elimina directorio recursivamente<br>
+                        <code>rm -f archivo.txt</code> - Fuerza eliminación sin confirmar
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>cat</code></td>
+                    <td>Muestra el contenido completo de un archivo</td>
+                    <td>
+                        <code>cat archivo.txt</code><br>
+                        <code>cat -n archivo.txt</code> - Muestra con números de línea
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>less</code></td>
+                    <td>Visualizador de archivos con desplazamiento</td>
+                    <td><code>less archivo.txt</code> - Navega usando flechas o espacio</td>
+                </tr>
+                <tr>
+                    <td><code>vi</code></td>
+                    <td>Editor muy básico de archivos</td>
+                    <td><code>vi archivo.txt</code> - La neta todavia no se usarlo</td>
+                </tr>
+                <tr>
+                    <td><code>nano</code></td>
+                    <td>Editor más comodo en mi opinion</td>
+                    <td><code>nano archivo.txt</code> - ctrl x para salir y guardar</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="footer">
+        <a href="/entregas/index.html">Volver a la página principal</a>
+    </div>
+</body>
+</html>

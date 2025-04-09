@@ -1,0 +1,37 @@
+#Posts a {
+    
+    color: #304950;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+#Posts h3{
+    color: #0033cc;
+}
+#footer {
+    background-color: #304950;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    a {
+        color: #fff;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+            color: black;
+        }
+    }
+}
+#contenido {
+    padding-bottom:10px;
+    margin-bottom: 50px;
+    
+}
