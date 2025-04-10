@@ -1,0 +1,90 @@
+#general-container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+}
+body {
+    margin: 0;
+    
+}
+#header{
+    flex: 0.5;
+    display: flex;
+    align-items: center;
+
+    background-color: rgb(47, 57, 87);
+    color: white;
+}
+#title{
+    flex: 3;
+    margin-left: 150px;
+
+}
+#button{
+    margin-right: 150px;
+    display: flex;
+    flex:1;
+    justify-content: space-evenly;
+}
+#description{
+    flex: 3;
+    background-color: orange;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    flex: 3;
+    
+}
+#description p{
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+#description h1{
+    margin: 0px;
+    padding: 0px;
+}
+button {
+    background-color: orange;
+    color: white;
+}
+
+#suscribe{
+    flex: 1;
+    background-color: rgb(47, 57, 87);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#suscribe div, h2{
+    margin: 20px;
+}
+#technologies {
+    flex: 2;
+    display: flex;
+    padding: 20px;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#technologies div{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+#footer{
+    flex: 0.5;
+    background-color: rgb(47, 57, 87);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
