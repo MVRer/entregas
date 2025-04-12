@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a CSS</title>
+    <link rel="stylesheet" href="../blog_css.css">
+</head>
+<body>
+    <div id="tituloydesc">
+        <h1>Introducción a CSS</h1>
+        <p>En este post aprenderás qué es CSS, sus componentes básicos y cómo dar estilo a tus páginas web de manera efectiva.</p>
+    </div>
+
+    <div id="contenido">
+        <h2>¿Qué es CSS?</h2>
+        <p>CSS (Cascading Style Sheets) es un lenguaje que define la presentación visual de documentos HTML, controlando colores, tamaños, posiciones y otros aspectos visuales de los elementos web.</p>
+
+        <h2>Componentes básicos</h2>
+        <p>Una regla CSS consta de tres elementos fundamentales:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Componente</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Selector</td>
+                    <td>Indica qué elemento HTML será estilizado</td>
+                </tr>
+                <tr>
+                    <td>Propiedad</td>
+                    <td>Especifica qué característica se modificará</td>
+                </tr>
+                <tr>
+                    <td>Valor</td>
+                    <td>Define cómo se modificará la propiedad</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Selectores en CSS</h3>
+        <p>Los selectores determinan a qué elementos se aplicarán los estilos:</p>
+
+        <h4>Selector por tipo</h4>
+        <pre><code>p {
+    color: blue;
+    font-size: 16px;
+}</code></pre>
+        <p>Aplica estilos a todos los elementos del tipo especificado (en este caso, todos los párrafos).</p>
+
+        <h4>Selector de clase</h4>
+        <pre><code>.destacado {
+    background-color: yellow;
+    font-weight: bold;
+}</code></pre>
+        <p>Aplica estilos a elementos con la clase especificada: <code>&lt;p class="destacado"&gt;</code></p>
+
+        <h4>Selector de ID</h4>
+        <pre><code>#cabecera {
+    background-color: black;
+    color: white;
+}</code></pre>
+        <p>Aplica estilos al elemento con el ID especificado: <code>&lt;div id="cabecera"&gt;</code></p>
+
+        <h3>Diferencias entre selectores</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Sintaxis</th>
+                    <th>Especificidad</th>
+                    <th>Uso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Elemento</td>
+                    <td><code>p { }</code></td>
+                    <td>Baja</td>
+                    <td>Estilos generales</td>
+                </tr>
+                <tr>
+                    <td>Clase</td>
+                    <td><code>.clase { }</code></td>
+                    <td>Media</td>
+                    <td>Grupos de elementos</td>
+                </tr>
+                <tr>
+                    <td>ID</td>
+                    <td><code>#id { }</code></td>
+                    <td>Alta</td>
+                    <td>Elementos únicos</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>Propiedades y valores comunes</h3>
+        <ul>
+            <li><code>color: red;</code> - Color del texto</li>
+            <li><code>font-size: 16px;</code> - Tamaño de fuente</li>
+            <li><code>margin: 10px;</code> - Margen exterior</li>
+            <li><code>padding: 5px;</code> - Relleno interior</li>
+            <li><code>background-color: #f0f0f0;</code> - Color de fondo</li>
+        </ul>
+
+        <h2>Formas de incluir CSS</h2>
+        <ol>
+            <li><strong>CSS Interno:</strong> <code>&lt;style&gt;...&lt;/style&gt;</code> en el <code>&lt;head&gt;</code></li>
+            <li><strong>CSS en línea:</strong> <code>&lt;p style="color: blue;"&gt;</code></li>
+            <li><strong>CSS Externo:</strong> <code>&lt;link rel="stylesheet" href="estilos.css"&gt;</code></li>
+        </ol>
+    </div>
+
+    <div id="footer">
+        <a href="/entregas/index.html">Volver a la página principal</a>
+    </div>
+
+</body>
+</html>

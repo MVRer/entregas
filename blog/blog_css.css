@@ -1,0 +1,141 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+#tituloydesc {
+    background-image: url('https://cdn.motor1.com/images/mgl/KEnVb/s3/2018-jeep-grand-cherokee-trackhawk-first-drive.jpg');
+
+    padding: 15px;
+    color: white;
+    border-bottom: 3px solid #203040;
+}
+
+#tituloydesc h1 {
+    font: 700 24px 'Segoe UI', sans-serif;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+#tituloydesc p {
+    font-style: italic;
+}
+
+#contenido {
+    padding: 15px;
+    margin-bottom: 70px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+#contenido h2 {
+    color: #304950;
+    border-bottom: 2px solid #304950;
+}
+
+#contenido h3 {
+    color: #0033cc;
+    border-left: 4px solid #0033cc;
+    padding-left: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+th {
+    background-color: #304950;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+pre {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: auto;
+    font-family: 'Courier New', monospace;
+    border-left: 4px solid #304950;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    background-color: #f0f0f0;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+ul {
+    list-style: square;
+}
+
+#Posts {
+    padding: 0 15px;
+    margin-bottom: 70px;
+}
+
+#Posts h2 {
+    color: #304950;
+    border-bottom: 2px solid #304950;
+}
+
+#Posts ul {
+    list-style: none;
+    padding: 0;
+}
+
+#Posts li {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+#Posts a {
+    color: #304950;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+
+#Posts h3 {
+    color: #0033cc;
+}
+
+#footer {
+    background-color: #304950;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 2px solid #203040;
+}
+
+#footer a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 4px;
+}
+
+#footer a:hover {
+    color: white;
+    background-color: #304950;
+}
