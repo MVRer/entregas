@@ -2,6 +2,7 @@
  * Base class for game objects in general
  *
  * Gilberto Echeverria
+ * Mariano C
  * 2025-04-07
  */
 
@@ -71,19 +72,19 @@ class AnimatedObject extends GameObject {
         this.spriteHeight = spriteHeight;   
         this.sheetRows = sheetRows;
         this.currentFrame = 0;
-        this.frameTime = 1000; // Tiempo por frame en milisegundos
+        this.frameTime = 1000; 
         this.lastFrameTime = 0;
         
-        // Nuevas propiedades para controlar la animación
-        this.currentRow = 0;        // Fila actual en el sprite sheet
-        this.startColumn = 0;       // Columna de inicio para la animación
-        this.endColumn = sheetCols - 1; // Columna final para la animación
+    
+        this.currentRow = 0;        
+        this.startColumn = 0;       
+        this.endColumn = sheetCols - 1; 
     }
 
     update_frame(deltaTime) {
         this.lastFrameTime += deltaTime;
         if (this.lastFrameTime >= this.frameTime) {
-            // Actualizar el frame dentro del rango especificado
+            
             this.currentFrame = this.startColumn + ((this.currentFrame - this.startColumn + 1) % (this.endColumn - this.startColumn + 1));
             
             //console.log([this.currentFrame, this.lastFrameTime, deltaTime, this.frameTime]);
@@ -123,7 +124,7 @@ class AnimatedObject extends GameObject {
         ctx.stroke();
     }
 
-    // Método para establecer la fila que se quiere animar
+
     setRow(row) {
         if (row >= 0 && row < this.sheetRows) {
             this.currentRow = row;
@@ -132,12 +133,12 @@ class AnimatedObject extends GameObject {
         }
     }
 
-    // Método para establecer el rango de columnas a animar
+   
     setColumnRange(startCol, endCol) {
         if (startCol >= 0 && endCol < this.sheetCols && startCol <= endCol) {
             this.startColumn = startCol;
             this.endColumn = endCol;
-            this.currentFrame = startCol; // Reiniciar al inicio del nuevo rango
+            this.currentFrame = startCol;
         } else {
             console.warn("El rango de columnas está fuera de límites");
         }
@@ -174,7 +175,7 @@ class AnimatedObject extends GameObject {
     update(deltaTime) {
         this.lastFrameTime += deltaTime;
         if (this.lastFrameTime >= this.frameTime) {
-            // Actualizar el frame dentro del rango especificado
+            
             this.currentFrame = this.startColumn + ((this.currentFrame - this.startColumn + 1) % (this.endColumn - this.startColumn + 1));
             this.lastFrameTime = 0;
         }
