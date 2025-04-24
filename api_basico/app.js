@@ -15,7 +15,8 @@ class item {
     constructor(id, name, type, effect){
         this.id = id;
         this.name = name;
-        this.price = price;
+        this.type = type;
+        this.effect = effect;
     }
 }
 
@@ -24,6 +25,10 @@ const items = [
     new item(1, "Sword", "Weapon", "Sharpness"),
     new item(2, "Shield", "Armor", "Defense"),
     new item(3, "Potion", "Consumable", "Healing"),
+]
+const users = [
+    new user(1, "John Doe", "jhon@gmail.com", [items[0], items[1]]),
+    new user(2, "Jane Smith", "jane@gmail.com", [items[1], items[2]]),
 ]
 
 
