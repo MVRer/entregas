@@ -30,7 +30,7 @@ class GameObject {
         }
        
 
-        this.drawBoundingBox(ctx);
+        //this.drawBoundingBox(ctx);
     }
     setSprite(imagePath, rect) {
         this.spriteImage = new Image();
@@ -105,7 +105,7 @@ class AnimatedObject extends GameObject {
             ctx.fillStyle = this.color;
             ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
-        this.drawBoundingBox(ctx);
+        //this.drawBoundingBox(ctx);
     }
 
     setSprite(imagePath, rect) {
