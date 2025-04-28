@@ -40,6 +40,24 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static("./public"));
+
+app.put("/api/items/update/:id", (req, res) => {
+    console.log(req.body);
+    const idtomod = req.params.id;
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].id == idtomod) {
+            items[i].name = req.body.name;
+            items[i].type = req.body.type;
+            items[i].effect = req.body.effect;
+            res.status(200).json({ message: "Item updated successfully!" });
+            return;
+
+        }
+    }
+    res.status(404).json({ message: "Item not found!" });
+    return;
+})
+
 app.get("/", (req, response) => {
     fs.readFile("./public/html/index.html", "utf8", (err,data) =>{
         if (err) {
