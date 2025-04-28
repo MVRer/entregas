@@ -1,6 +1,7 @@
 "use strict";
 
 import express from "express";
+import fs from "fs";
 
 class user {
     constructor(id, name, mail, items){
@@ -34,8 +35,20 @@ const users = [
 
 const PORT = 3000;
 const app = express();
+
+
+
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static("./public"));
+app.get("/", (req, response) => {
+    fs.readFile("./public/html/index.html", "utf8", (err,data) =>{
+        if (err) {
+            response.status(500).send("Error reading file");
+            return;
+        }
+        response.send(data);
+    })
+})
 app.get("/api/hello", (req, res) => {
     res.json({ message: "Hello from the server!" });
 });
