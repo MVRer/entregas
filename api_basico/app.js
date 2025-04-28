@@ -36,8 +36,16 @@ const users = [
 const PORT = 3000;
 const app = express();
 
-
-
+app.delete("/api/items/remove/:id", (req, res) => {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].id == req.params.id) {
+            items.splice(i, 1);
+            res.status(200).json({ message: "Item removed successfully" });
+            return;
+        }
+    }
+    res.status(404).json({ message: "Item not found" });
+});
 app.use(express.json());
 app.use(express.static("./public"));
 app.get("/", (req, response) => {
