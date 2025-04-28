@@ -57,10 +57,11 @@ app.get("/api/items", (req, res) => {
 
 
 app.post("/api/items/add/", (req, res) => {
-    const item_tmp = req.body;
-    
-    if (!item_tmp.name || !item_tmp.type || !item_tmp.effect){
-        res.status(400).json({ message: "Wrong format",
+    const items_tmp = req.body;
+    console.log(items_tmp);
+
+    if (!Array.isArray(items_tmp)) {
+        res.status(400).json({ message: "Wrong format, must be a list of items",
             format: "json",
             example: {
                 name: "Sword",
@@ -70,22 +71,36 @@ app.post("/api/items/add/", (req, res) => {
         });
         return;
     }
-    for (let i = 0; i < items.length; i++) {
-        if (items[i].name === item_tmp.name) {
-            res.status(400).json({ message: "Item already exists" });
+
+    for (let i = 0; i < items_tmp.length; i++) {
+        const item_tmp = items_tmp[i];
+        console.log(item_tmp);
+        if (!item_tmp.name || !item_tmp.type || !item_tmp.effect){
+            res.status(400).json({ message: "Wrong format",
+                format: "json",
+                example: {
+                    name: "Sword",
+                    type: "Weapon",
+                    effect: "Sharpness"
+                }
+            });
             return;
         }
-    }
-    
+        for (let j = 0; j < items.length; j++) {
+            if (items[j].name === item_tmp.name) {
+                res.status(400).json({ message: "Item already exists", error: "Error in item: " + item_tmp.name });
+                return;
+            }
 
-    //const item = new item(item.id, item_tmp.name, item_tmp.type, item_tmp.effect);
-    //items.push(item);
-    const newItem = new item(items.length + 1, item_tmp.name, item_tmp.type, item_tmp.effect);
-    items.push(newItem);
-    res.status(200).json({ message: "Item added successfully" });
+            
+        }
+        const newItem = new item(items.length + 1, item_tmp.name, item_tmp.type, item_tmp.effect);
+        items.push(newItem);
+    }
+    res.status(200).json({ message: "Items added successfully" });
     return;
     
-}) 
+});
 
 
 
