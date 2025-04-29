@@ -52,6 +52,44 @@ app.use(express.json());
 
 app.use(express.static("./public"));
 
+
+app.get("/api/users/:id", (req, res) => {
+    const userId = parseInt(req.params.id);
+
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].id === userId){
+            const user = {
+                id: users[i].id,
+                name: users[i].name,
+                mail: users[i].mail,
+                items: [],
+            };
+            for (let j = 0; j < users[i].items.length; j++) {
+                const item_id = users[i].items[j];
+                for (let k = 0; k < items.length; k++) {
+                    if (items[k].id === item_id) {
+                        const item_tmp = {
+                            id: items[k].id,
+                            name: items[k].name,
+                            type: items[k].type,
+                            effect: items[k].effect,
+                        };
+                        user.items = user.items || [];
+                        user.items.push(item_tmp);
+                    }
+                }
+            }
+            res.json(user);
+            return;
+        }
+        
+    
+    }
+    res.status(404).json({ error: "User not found" });
+});
+
+
+
 app.put("/api/users/update/:id", (req, res) => {
     const userId = parseInt(req.params.id);
     if (isNaN(userId)) {
@@ -89,6 +127,7 @@ app.delete("/api/users/remove/:id", (req, res) => {
   res.status(404).json({ message: "User not found" });
   return;
 });
+
 
 
 
@@ -202,9 +241,6 @@ app.put("/api/items/update/:id", (req, res) => {
     res.status(404).json({ message: "Item not found!" });
     return;
 })
-
-
-
 
 
 app.get("/", (req, response) => {
