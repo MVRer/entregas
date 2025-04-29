@@ -38,6 +38,11 @@ const PORT = 3000;
 const app = express();
 
 
+
+app.use(express.json());
+
+app.use(express.static("./public"));
+
 app.delete("/api/items/remove/:id", (req, res) => {
     for (let i = 0; i < items.length; i++) {
         if (items[i].id == req.params.id) {
@@ -49,9 +54,6 @@ app.delete("/api/items/remove/:id", (req, res) => {
     res.status(404).json({ message: "Item not found" });
 });
 
-app.use(express.json());
-
-app.use(express.static("./public"));
 
 app.delete("/api/users/remove/:id", (req, res) => {
     const userId = parseInt(req.params.id);

@@ -55,7 +55,7 @@ async function main() {
 
     
 
-    response = await fetch("http://localhost:3000/api/items/update/1", {
+    response = await fetch("http://localhost:3000/api/items/update/2", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
