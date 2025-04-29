@@ -120,7 +120,7 @@ async function main() {
     console.log({test: "Add items", response: message} );
 
     response = await fetch("http://localhost:3000/api/items");
-    message = await test_endpoint_2_2.json();
+    message = await response.json();
     console.log({test: "Get all items", response: message} );
 
 
