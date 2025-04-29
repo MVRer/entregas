@@ -28,8 +28,8 @@ const items = [
     new item(3, "Potion", "Consumable", "Healing"),
 ]
 const users = [
-    new user(1, "John Doe", "jhon@gmail.com", [items[0], items[1]]),
-    new user(2, "Jane Smith", "jane@gmail.com", [items[1], items[2]]),
+    new user(1, "John Doe", "jhon@gmail.com", [1, 2]),
+    new user(2, "Jane Smith", "jane@gmail.com", [2, 3]),
 ]
 
 
@@ -40,6 +40,40 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static("./public"));
+app.get("/api/users/:id", (req, res) => {
+    const userId = parseInt(req.params.id);
+
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].id === userId){
+            const user = {
+                id: users[i].id,
+                name: users[i].name,
+                mail: users[i].mail,
+                items: [],
+            };
+            for (let j = 0; j < users[i].items.length; j++) {
+                const item_id = users[i].items[j];
+                for (let k = 0; k < items.length; k++) {
+                    if (items[k].id === item_id) {
+                        const item_tmp = {
+                            id: items[k].id,
+                            name: items[k].name,
+                            type: items[k].type,
+                            effect: items[k].effect,
+                        };
+                        user.items = user.items || [];
+                        user.items.push(item_tmp);
+                    }
+                }
+            }
+            res.json(user);
+            return;
+        }
+        
+    
+    }
+    res.status(404).json({ error: "User not found" });
+});
 app.get("/", (req, response) => {
     fs.readFile("./public/html/index.html", "utf8", (err,data) =>{
         if (err) {
