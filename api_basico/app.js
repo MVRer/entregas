@@ -104,6 +104,14 @@ app.post("/api/items/add/", (req, res) => {
 app.get("/api/hello", (req, res) => {
     res.json({ message: "Hello from the server!" });
 });
+app.get("/api/items/find/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const item = items.find(i => i.id === id);
+    if (!item) {
+        return res.status(404).json({ error: "Item not found" });
+    }
+    res.json(item);
+});
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
