@@ -28,7 +28,6 @@ const items = [
     new item(3, "Potion", "Consumable", "Healing"),
 ]
 const users = [
-
     new user(1, "John Doe", "jhon@gmail.com", [1, 2]),
     new user(2, "Jane Smith", "jane@gmail.com", [1, 2]),
 ]
@@ -55,17 +54,84 @@ app.delete("/api/items/remove/:id", (req, res) => {
 });
 
 
+
+app.get("/api/users/:id", (req, res) => {
+    const userId = parseInt(req.params.id);
+
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].id === userId){
+            const user = {
+                id: users[i].id,
+                name: users[i].name,
+                mail: users[i].mail,
+                items: [],
+            };
+            for (let j = 0; j < users[i].items.length; j++) {
+                const item_id = users[i].items[j];
+                for (let k = 0; k < items.length; k++) {
+                    if (items[k].id === item_id) {
+                        const item_tmp = {
+                            id: items[k].id,
+                            name: items[k].name,
+                            type: items[k].type,
+                            effect: items[k].effect,
+                        };
+                        user.items = user.items || [];
+                        user.items.push(item_tmp);
+                    }
+                }
+            }
+            res.json(user);
+            return;
+        }
+        
+    
+    }
+    res.status(404).json({ error: "User not found" });
+});
+
+
+
+app.put("/api/users/update/:id", (req, res) => {
+    const userId = parseInt(req.params.id);
+    if (isNaN(userId)) {
+        res.status(400).json({ message: "Invalid user ID" });
+        return;
+    }
+    if (!req.body.name || !req.body.mail || !req.body.items) {
+        res.status(400).json({ message: "Missing required fields" });
+        return;
+    }
+    
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].id === userId) {
+            users[i].name = req.body.name;
+            users[i].mail = req.body.mail;
+            users[i].items = req.body.items;
+            res.json({messsage: "User updated successfully", user: users[i]});
+            return;
+        }
+    }
+    res.status(404).json({ message: "User not found" });
+  return;
+});
+          
+
+
 app.delete("/api/users/remove/:id", (req, res) => {
     const userId = parseInt(req.params.id);
     for (let i = 0; i < users.length; i++) {
         if (users[i].id === userId) {
             users.splice(i, 1);
             res.status(200).json({ message: "User deleted successfully" });
-            return;
         }
     }
-    res.status(404).json({ message: "User not found" });
+  res.status(404).json({ message: "User not found" });
+  return;
 });
+
+
+
 
 
 
@@ -177,8 +243,6 @@ app.put("/api/items/update/:id", (req, res) => {
     res.status(404).json({ message: "Item not found!" });
     return;
 })
-
-
 
 
 app.get("/", (req, response) => {
