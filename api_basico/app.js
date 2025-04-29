@@ -40,7 +40,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static("./public"));
-app.delete("/api/users/:id", (req, res) => {
+app.delete("/api/users/remove/:id", (req, res) => {
     const userId = parseInt(req.params.id);
     for (let i = 0; i < users.length; i++) {
         if (users[i].id === userId) {
