@@ -40,6 +40,17 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static("./public"));
+app.delete("/api/users/:id", (req, res) => {
+    const userId = parseInt(req.params.id);
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].id === userId) {
+            users.splice(i, 1);
+            res.status(200).json({ message: "User deleted successfully" });
+            return;
+        }
+    }
+    res.status(404).json({ message: "User not found" });
+});
 app.get("/", (req, response) => {
     fs.readFile("./public/html/index.html", "utf8", (err,data) =>{
         if (err) {
