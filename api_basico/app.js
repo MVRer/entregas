@@ -53,6 +53,19 @@ app.use(express.json());
 
 app.use(express.static("./public"));
 
+app.delete("/api/users/remove/:id", (req, res) => {
+    const userId = parseInt(req.params.id);
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].id === userId) {
+            users.splice(i, 1);
+            res.status(200).json({ message: "User deleted successfully" });
+            return;
+        }
+    }
+    res.status(404).json({ message: "User not found" });
+});
+
+
 
 app.get("/api/users", (req, res) => {
     
@@ -162,6 +175,7 @@ app.put("/api/items/update/:id", (req, res) => {
     res.status(404).json({ message: "Item not found!" });
     return;
 })
+
 
 
 
