@@ -6,6 +6,12 @@ async function main() {
 
     console.log(message);
 
+    
+    response = await fetch("http://localhost:3000/api/users");
+    message = await response.json();
+    console.log(message);
+
+
     const users = [
         {
             name: "Jhon",
@@ -76,6 +82,7 @@ async function main() {
     const test_endpoint_2_2 = await fetch("http://localhost:3000/api/items");
     const data2 = await test_endpoint_2_2.json();
     console.log(data2);
+
 
 
 }
