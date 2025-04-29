@@ -48,6 +48,10 @@ async function main() {
     message = await response.json();
     console.log(message);
     response = await fetch("http://localhost:3000/api/items/remove/1", {
+        method: "DELETE"
+    });
+    message = await response.json();
+    console.log(message);
 
     
 
