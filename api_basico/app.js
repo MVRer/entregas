@@ -28,8 +28,8 @@ const items = [
     new item(3, "Potion", "Consumable", "Healing"),
 ]
 const users = [
-    new user(1, "John Doe", "jhon@gmail.com", [items[0], items[1]]),
-    new user(2, "Jane Smith", "jane@gmail.com", [items[1], items[2]]),
+    new user(1, "John Doe", "jhon@gmail.com", [1,2]),
+    new user(2, "Jane Smith", "jane@gmail.com", [1,2]),
 ]
 
 
@@ -40,6 +40,23 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static("./public"));
+app.put("/api/users/update/:id", (req, res) => {
+    const userId = parseInt(req.params.id);
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].id === userId) {
+            users[i].name = req.body.name;
+            users[i].mail = req.body.mail;
+            users[i].items = req.body.items;
+            res.json({messsage: "User updated successfully", user: users[i]});
+            return;
+        }
+    }
+    res.status(404).json({ message: "User not found" });
+    return;
+    
+
+    
+});
 app.get("/", (req, response) => {
     fs.readFile("./public/html/index.html", "utf8", (err,data) =>{
         if (err) {
