@@ -42,6 +42,15 @@ app.use(express.json());
 app.use(express.static("./public"));
 app.put("/api/users/update/:id", (req, res) => {
     const userId = parseInt(req.params.id);
+    if (isNaN(userId)) {
+        res.status(400).json({ message: "Invalid user ID" });
+        return;
+    }
+    if (!req.body.name || !req.body.mail || !req.body.items) {
+        res.status(400).json({ message: "Missing required fields" });
+        return;
+    }
+    
     for (let i = 0; i < users.length; i++) {
         if (users[i].id === userId) {
             users[i].name = req.body.name;
