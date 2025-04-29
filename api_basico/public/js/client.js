@@ -6,6 +6,31 @@ async function main() {
 
     console.log(message);
 
+    const users = [
+        {
+            name: "Jhon",
+            mail: "didi@gmail.com",
+            items: [1, 2]
+        },
+        {
+            name: "Doe",
+            mail: "cocolazo@gmail.com",
+            items: [1, 3]
+        }
+    ]
+
+
+    response = await fetch("http://localhost:3000/api/users/add", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(users)
+    });
+    message = await response.json();
+    console.log(message);
+
+
     response = await fetch("http://localhost:3000/api/items/find/1");
     message = await response.json();
     console.log(message);
@@ -51,6 +76,7 @@ async function main() {
     const test_endpoint_2_2 = await fetch("http://localhost:3000/api/items");
     const data2 = await test_endpoint_2_2.json();
     console.log(data2);
+
 
 }
 main();
