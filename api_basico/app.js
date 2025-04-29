@@ -124,6 +124,7 @@ app.delete("/api/users/remove/:id", (req, res) => {
         if (users[i].id === userId) {
             users.splice(i, 1);
             res.status(200).json({ message: "User deleted successfully" });
+            return;
         }
     }
   res.status(404).json({ message: "User not found" });
@@ -228,7 +229,7 @@ app.post("/api/users/add/", (req, res) => {
 });
 
 app.put("/api/items/update/:id", (req, res) => {
-    console.log(req.body);
+    
     const idtomod = req.params.id;
     for (let i = 0; i < items.length; i++) {
         if (items[i].id == idtomod) {
@@ -263,7 +264,7 @@ app.get("/api/items", (req, res) => {
 
 app.post("/api/items/add/", (req, res) => {
     const items_tmp = req.body;
-    console.log(items_tmp);
+
 
     if (!Array.isArray(items_tmp)) {
         res.status(400).json({ message: "Wrong format, must be a list of items",
@@ -279,7 +280,7 @@ app.post("/api/items/add/", (req, res) => {
 
     for (let i = 0; i < items_tmp.length; i++) {
         const item_tmp = items_tmp[i];
-        console.log(item_tmp);
+    
         if (!item_tmp.name || !item_tmp.type || !item_tmp.effect){
             res.status(400).json({ message: "Wrong format",
                 format: "json",
