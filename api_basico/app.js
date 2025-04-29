@@ -36,6 +36,7 @@ const users = [
 const PORT = 3000;
 const app = express();
 
+
 app.use(express.json());
 
 app.use(express.static("./public"));
@@ -48,7 +49,6 @@ app.get("/", (req, response) => {
         response.send(data);
     })
 })
-
 // ITEM API
 app.get("/api/items", (req, res) => {
     res.json(items);
@@ -101,9 +101,6 @@ app.post("/api/items/add/", (req, res) => {
     return;
     
 });
-
-
-
 app.get("/api/hello", (req, res) => {
     res.json({ message: "Hello from the server!" });
 });
