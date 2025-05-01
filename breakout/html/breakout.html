@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>P O N G</title>
+        <title>Breakout</title>
         <link rel="stylesheet" href="../css/styles.css">
         <script src="../js/game_object_class.js"></script>
         <script src="../js/text_label_class.js"></script>
@@ -13,10 +13,69 @@
         <div id="headerContainer">
             <h1>Breakout</h1>
         </div>
+        
+        <div id="gameControls">
+            <div class="control-group">
+                <label for="rowsSlider">Filas: <span id="rowsValue">6</span></label>
+                <input type="range" id="rowsSlider" min="1" max="10" value="6" class="slider">
+            </div>
+            
+            <div class="control-group">
+                <label for="blocksPerRowSlider">Bloques por fila: <span id="blocksValue">25</span></label>
+                <input type="range" id="blocksPerRowSlider" min="5" max="40" value="25" class="slider">
+            </div>
+            
+            <button id="startGameBtn">Iniciar Juego</button>
+        </div>
+        
         <canvas id="canvas"></canvas>
-        <a href="/">
-            <button id="backButton">Back</button>
-        </a>
-        <script> main(); </script>
+        
+        <div id="gameControls-bottom">
+            <a href="/entregas/index.html">
+                <button id="backButton">Back</button>
+            </a>
+            <button id="resetGameBtn">Reiniciar</button>
+        </div>
+        
+        <script>
+            // Obtener referencias a los elementos DOM
+            const rowsSlider = document.getElementById('rowsSlider');
+            const blocksPerRowSlider = document.getElementById('blocksPerRowSlider');
+            const rowsValue = document.getElementById('rowsValue');
+            const blocksValue = document.getElementById('blocksValue');
+            const startGameBtn = document.getElementById('startGameBtn');
+            const resetGameBtn = document.getElementById('resetGameBtn');
+            const gameControls = document.getElementById('gameControls');
+            
+            // Actualizar los valores mostrados cuando se mueven los sliders
+            rowsSlider.addEventListener('input', () => {
+                rowsValue.textContent = rowsSlider.value;
+            });
+            
+            blocksPerRowSlider.addEventListener('input', () => {
+                blocksValue.textContent = blocksPerRowSlider.value;
+            });
+            
+            // Iniciar el juego con los valores seleccionados
+            startGameBtn.addEventListener('click', () => {
+                // Establecer las variables globales del juego
+                window.rows = parseInt(rowsSlider.value);
+                window.blocksperow = parseInt(blocksPerRowSlider.value);
+                
+                // Ocultar el panel de control
+                gameControls.style.display = 'none';
+                
+                // Iniciar el juego
+                main();
+            });
+            
+            // Reiniciar el juego
+            resetGameBtn.addEventListener('click', () => {
+                location.reload();
+            });
+            
+            // No ejecutar main() automáticamente, esperar al botón de inicio
+            // Se eliminó la línea: <script> main(); </script>
+        </script>
     </body>
 </html>

@@ -1,17 +1,150 @@
-#Posts a {
-    
+/* Variables globales */
+:root {
+    --bg-primary: #0f172a;
+    --bg-card: #1e293b;
+    --accent-color: #3b82f6;
+    --accent-hover: #60a5fa;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --border-radius: 0.5rem;
+    --transition: all 0.3s ease;
+  }
+  
+  /* Estilos base */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+  
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    line-height: 1.6;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Contenedor de tareas */
+  .tasks-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Tarjetas de tareas */
+  .task-card {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .task-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), #8b5cf6);
+  }
+  
+  .task-card a {
+    padding: 1.5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+    flex: 1;
+  }
+  
+  .task-card a::after {
+    content: '→';
+    margin-left: auto;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: var(--transition);
+  }
+  
+  .task-card:hover a::after {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .task-card .task-number {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--accent-color);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  .task-card .task-icon {
+    margin-right: 0.75rem;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(59, 130, 246, 0.1);
+    border-radius: 50%;
+    padding: 0.5rem;
+  }
+  
+  /* Manteniendo estilos originales que pediste no modificar */
+  #Posts a {
     color: #304950;
     text-decoration: none;
     padding: 0;
     margin: 0;
-    &:hover {
-        text-decoration: underline;
-    }
-}
-#Posts h3{
+  }
+  
+  #Posts a:hover {
+    text-decoration: underline;
+  }
+  
+  #Posts h3 {
     color: #0033cc;
-}
-#footer {
+  }
+  
+  #footer {
     background-color: #304950;
     color: #fff;
     padding: 10px 0;
@@ -21,17 +154,34 @@
     bottom: 0;
     left: 0;
     right: 0;
-    a {
-        color: #fff;
-        text-decoration: none;
-        &:hover {
-            text-decoration: underline;
-            color: black;
-        }
-    }
-}
-#contenido {
-    padding-bottom:10px;
+  }
+  
+  #footer a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  #footer a:hover {
+    text-decoration: underline;
+    color: black;
+  }
+  
+  #contenido {
+    padding-bottom: 10px;
     margin-bottom: 50px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
     
-}
+    .tasks-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .task-card a {
+      padding: 1.25rem;
+    }
+  }

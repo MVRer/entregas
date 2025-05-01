@@ -18,16 +18,16 @@ let oldTime;
 const paddleVelocity = 0.8;
 const speedIncrease = 1;
 const initialSpeed = 0.3;
-let rows = 10;
+// Variables globales que pueden ser modificadas desde la interfaz
+window.rows = window.rows || 6;
 let blocks = 0;
 let rowCount = 1;
 let lives = 3;
 let score = 0;
 let totalblocks = [];
 const rowHeight = canvasHeight / 20;
-const blocksperow = 25;
-let totalblockscount = rows * blocksperow;
-const blockWidth = ((canvasWidth / blocksperow) - (20 / blocksperow));
+window.blocksperow = window.blocksperow || 25;
+let totalblockscount = window.rows * window.blocksperow;
 
 // Context of the Canvas
 let ctx;
@@ -89,7 +89,7 @@ class Paddle extends GameObject {
 }
 class Block extends GameObject {
     constructor() {
-        if (blocks == blocksperow) {
+        if (blocks == window.blocksperow) {
             blocks = 0;
             rowCount++;
         }
@@ -115,6 +115,7 @@ class Block extends GameObject {
         } else {
             colorofrow = "pink";
         }
+        const blockWidth = ((canvasWidth / window.blocksperow) - (20 / window.blocksperow));
         super(new Vec(blockWidth * blocks + 10, (rowHeight * rowCount)), blockWidth, rowHeight, colorofrow, "block");
         blocks++;
 
@@ -145,10 +146,10 @@ class Game {
         this.rightBorder = new GameObject(new Vec(canvasWidth - 10, 0), 10, canvasHeight, "gray", "barrier");
         this.bottomBorder = new GameObject(new Vec(0, canvasHeight - 10), canvasWidth, 10, "gray", "goal");
         this.paddlebottom = new Paddle(new Vec(canvasWidth / 2 - canvasWidth / 5 / 2, canvasHeight - 30), canvasWidth / 5, 10, "blue");
-        this.ball = new Ball(new Vec(canvasWidth / 2 - 10, this.paddlebottom.position.y - this.paddlebottom.height * 3), 20, 20, "white");
+        this.ball = new Ball(new Vec(canvasWidth / 2 - 10, this.paddlebottom.position.y - this.paddlebottom.height * 3), 6, 6, "white");
 
-        for (let i = 0; i < rows; i++) {
-            for (let j = 0; j < blocksperow; j++) {
+        for (let i = 0; i < window.rows; i++) {
+            for (let j = 0; j < window.blocksperow; j++) {
                 totalblocks.push(new Block());
             }
 
@@ -302,6 +303,14 @@ class Game {
 
 
 function main() {
+    // Limpiar bloques anteriores si existen
+    totalblocks = [];
+    blocks = 0;
+    rowCount = 1;
+    lives = 3;
+    score = 0;
+    totalblockscount = window.rows * window.blocksperow;
+    
     // Get a reference to the object with id 'canvas' in the page
     const canvas = document.getElementById('canvas');
     // Resize the element
