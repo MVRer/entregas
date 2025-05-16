@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="js/client.js" ></script>"
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>API Documentation</h1>
+            <p>Item and User Management API Reference</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <nav class="sidebar">
+            <div class="nav-section">
+                <h3>General</h3>
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#base-url">Base URL</a></li>
+                    <li><a href="#errors">Error Handling</a></li>
+                </ul>
+            </div>
+            <div class="nav-section">
+                <h3>Users</h3>
+                <ul>
+                    <li><a href="#get-users">Get All Users</a></li>
+                    <li><a href="#get-user">Get User by ID</a></li>
+                    <li><a href="#add-users">Add Users</a></li>
+                    <li><a href="#update-user">Update User</a></li>
+                    <li><a href="#delete-user">Delete User</a></li>
+                </ul>
+            </div>
+            <div class="nav-section">
+                <h3>Items</h3>
+                <ul>
+                    <li><a href="#get-items">Get All Items</a></li>
+                    <li><a href="#get-item">Get Item by ID</a></li>
+                    <li><a href="#add-items">Add Items</a></li>
+                    <li><a href="#update-item">Update Item</a></li>
+                    <li><a href="#delete-item">Delete Item</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="content">
+            <section id="introduction">
+                <h2>Introduction</h2>
+                <p>This API provides endpoints for managing users and inventory items. It allows for creating, reading, updating, and deleting both users and items.</p>
+            </section>
+
+            <section id="base-url">
+                <h2>Base URL</h2>
+                <p>All API endpoints are relative to the base URL:</p>
+                <div class="code-block">http://localhost:3000/api</div>
+            </section>
+
+            <section id="errors">
+                <h2>Error Handling</h2>
+                <p>The API uses conventional HTTP response codes to indicate the success or failure of an API request.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Status Code</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>200 - OK</td>
+                            <td>Everything worked as expected</td>
+                        </tr>
+                        <tr>
+                            <td>400 - Bad Request</td>
+                            <td>The request was unacceptable, often due to missing required parameters</td>
+                        </tr>
+                        <tr>
+                            <td>404 - Not Found</td>
+                            <td>The requested resource doesn't exist</td>
+                        </tr>
+                        <tr>
+                            <td>500 - Server Error</td>
+                            <td>Something went wrong on the server</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- USERS DOCUMENTATION -->
+            <section id="get-users">
+                <h2>Get All Users</h2>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <span class="path">/users</span>
+                </div>
+                <p>Retrieves a list of all users with their complete item details.</p>
+                
+                <h3>Response</h3>
+                <div class="code-block">[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "mail": "john@gmail.com",
+    "items": [
+      {
+        "id": 1,
+        "name": "Sword",
+        "type": "Weapon",
+        "effect": "Sharpness"
+      },
+      {
+        "id": 2,
+        "name": "Shield",
+        "type": "Armor",
+        "effect": "Defense"
+      }
+    ]
+  },
+  // More users...
+]</div>
+            </section>
+
+            <section id="get-user">
+                <h2>Get User by ID</h2>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <span class="path">/users/:id</span>
+                </div>
+                <p>Retrieves a specific user by their ID, including their complete item details.</p>
+                
+                <h3>Parameters</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td>Integer</td>
+                            <td>The unique identifier of the user</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Response</h3>
+                <div class="code-block">{
+  "id": 1,
+  "name": "John Doe",
+  "mail": "john@gmail.com",
+  "items": [
+    {
+      "id": 1,
+      "name": "Sword",
+      "type": "Weapon",
+      "effect": "Sharpness"
+    },
+    {
+      "id": 2,
+      "name": "Shield",
+      "type": "Armor",
+      "effect": "Defense"
+    }
+  ]
+}</div>
+            </section>
+
+            <section id="add-users">
+                <h2>Add Users</h2>
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <span class="path">/users/add</span>
+                </div>
+                <p>Adds one or more users to the system.</p>
+                
+                <h3>Request Body</h3>
+                <p>An array of user objects with the following properties:</p>
+                <div class="code-block">[
+  {
+    "name": "John",
+    "mail": "john@gmail.com",
+    "items": [1, 2] // Array of item IDs
+  },
+  // More users...
+]</div>
+                
+                <h3>Response</h3>
+                <div class="code-block">{
+  "message": "Users added successfully"
+}</div>
+            </section>
+
+            <section id="update-user">
+                <h2>Update User</h2>
+                <div class="endpoint">
+                    <span class="method put">PUT</span>
+                    <span class="path">/users/update/:id</span>
+                </div>
+                <p>Updates a specific user's information.</p>
+                
+                <h3>Parameters</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td>Integer</td>
+                            <td>The unique identifier of the user to update</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Request Body</h3>
+                <div class="code-block">{
+  "name": "Updated Name",
+  "mail": "updated@gmail.com",
+  "items": [1, 2, 3] // Array of item IDs
+}</div>
+                
+                <h3>Response</h3>
+                <div class="code-block">{
+  "message": "User updated successfully",
+  "user": {
+    "id": 1,
+    "name": "Updated Name",
+    "mail": "updated@gmail.com",
+    "items": [1, 2, 3]
+  }
+}</div>
+            </section>
+
+            <section id="delete-user">
+                <h2>Delete User</h2>
+                <div class="endpoint">
+                    <span class="method delete">DELETE</span>
+                    <span class="path">/users/remove/:id</span>
+                </div>
+                <p>Deletes a specific user by their ID.</p>
+                
+                <h3>Parameters</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td>Integer</td>
+                            <td>The unique identifier of the user</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Response</h3>
+                <div class="code-block">{
+  "message": "User deleted successfully"
+}</div>
+            </section>
+
+            <!-- ITEMS DOCUMENTATION -->
+            <section id="get-items">
+                <h2>Get All Items</h2>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <span class="path">/items</span>
+                </div>
+                <p>Retrieves a list of all items in the catalog.</p>
+                
+                <h3>Response</h3>
+                <div class="code-block">[
+  {
+    "id": 1,
+    "name": "Sword",
+    "type": "Weapon",
+    "effect": "Sharpness"
+  },
+  {
+    "id": 2,
+    "name": "Shield",
+    "type": "Armor",
+    "effect": "Defense"
+  },
+  // More items...
+]</div>
+            </section>
+
+            <section id="get-item">
+                <h2>Get Item by ID</h2>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <span class="path">/items/find/:id</span>
+                </div>
+                <p>Retrieves a specific item by its ID.</p>
+                
+                <h3>Parameters</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td>Integer</td>
+                            <td>The unique identifier of the item</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Response</h3>
+                <div class="code-block">{
+  "id": 1,
+  "name": "Sword",
+  "type": "Weapon",
+  "effect": "Sharpness"
+}</div>
+            </section>
+
+            <section id="add-items">
+                <h2>Add Items</h2>
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <span class="path">/items/add</span>
+                </div>
+                <p>Adds one or more items to the catalog.</p>
+                
+                <h3>Request Body</h3>
+                <p>An array of item objects with the following properties:</p>
+                <div class="code-block">[
+  {
+    "name": "Axe",
+    "type": "Weapon",
+    "effect": "Cutting"
+  },
+  // More items...
+]</div>
+                
+                <h3>Response</h3>
+                <div class="code-block">{
+  "message": "Items added successfully"
+}</div>
+            </section>
+
+            <section id="update-item">
+                <h2>Update Item</h2>
+                <div class="endpoint">
+                    <span class="method put">PUT</span>
+                    <span class="path">/items/update/:id</span>
+                </div>
+                <p>Updates a specific item's information.</p>
+                
+                <h3>Parameters</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td>Integer</td>
+                            <td>The unique identifier of the item to update</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Request Body</h3>
+                <div class="code-block">{
+  "name": "Updated Sword",
+  "type": "Legendary Weapon",
+  "effect": "Enhanced Sharpness"
+}</div>
+                
+                <h3>Response</h3>
+                <div class="code-block">{
+  "message": "Item updated successfully!"
+}</div>
+            </section>
+
+            <section id="delete-item">
+                <h2>Delete Item</h2>
+                <div class="endpoint">
+                    <span class="method delete">DELETE</span>
+                    <span class="path">/items/remove/:id</span>
+                </div>
+                <p>Deletes a specific item by its ID.</p>
+                
+                <h3>Parameters</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td>Integer</td>
+                            <td>The unique identifier of the item</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Response</h3>
+                <div class="code-block">{
+  "message": "Item removed successfully"
+}</div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 API Documentation</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

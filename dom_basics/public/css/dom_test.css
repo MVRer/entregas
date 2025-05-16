@@ -1,0 +1,214 @@
+* {
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+}
+
+h1 {
+  text-align: center;
+  font-size: 28px;
+  padding: 15px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 6px;
+  margin-top: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 8px;
+  margin-top: 30px;
+}
+
+h3 {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  color: #34495e;
+}
+
+section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 8px 0;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+li:hover {
+  background-color: #f0f7ff;
+  border-color: #b3d4fc;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 15px;
+  transition: border 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 8px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.result-output {
+  margin: 10px 0;
+  max-width: 100%;
+}
+
+.output-message {
+  padding: 12px 15px;
+  background-color: #e8f4fd;
+  border-left: 4px solid #3498db;
+  margin: 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+}
+
+#userList li,
+#itemList li {
+  display: flex;
+  align-items: center;
+}
+
+#userList li:before,
+#itemList li:before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #3498db;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  body {
+    padding: 40px;
+  }
+  
+  form,
+  .form-group {
+    max-width: 600px;
+  }
+}
+
+/* Different colors for different actions */
+#fetchUsersButton, #fetchItemsButton {
+  background-color: #3498db;
+}
+
+#fetchUserButton, #fetchItemButton {
+  background-color: #2ecc71;
+}
+
+#deleteUserButton, #deleteItemButton {
+  background-color: #e74c3c;
+}
+
+#updateUserButton, #updateItemButton {
+  background-color: #f39c12;
+}
+
+#addUserButton, #addItemButton {
+  background-color: #9b59b6;
+}
+
+/* Different styling for different outputs */
+#fetchUserResult .output-message,
+#fetchItemResult .output-message {
+  border-left-color: #2ecc71;
+  background-color: #eafaf1;
+}
+
+#deleteUserResult .output-message,
+#deleteItemResult .output-message {
+  border-left-color: #e74c3c;
+  background-color: #fdedec;
+}
+
+#updateUserResult .output-message,
+#updateItemResult .output-message {
+  border-left-color: #f39c12;
+  background-color: #fef5e7;
+}
+
+#addUserResult .output-message,
+#addItemResult .output-message {
+  border-left-color: #9b59b6;
+  background-color: #f4ecf7;
+}
