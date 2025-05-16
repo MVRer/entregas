@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User and Item API</title>
+  <link rel="stylesheet" href="../css/dom_test.css">
+  <script defer src="../js/dom_test.js"></script>
+</head>
+
+<body>
+
+  <h1>API ENDPOINTS TESTING</h1>
+  
+  <section>
+    <h2>Users</h2>
+    
+    <div id="fetchUsers">
+      <h3>Fetch All Users</h3>
+      <button id="fetchUsersButton" type="button">Fetch Users</button>
+      <div id="fetchUsersResult" class="result-output"></div>
+      <ul id="userList"></ul>
+    </div>
+
+    <div>
+      <h3>Actions with User ID</h3>
+      <div class="form-group">
+        <input type="text" id="userIdInput" placeholder="Enter User ID">
+        <button id="fetchUserButton" type="button">Fetch User</button>
+        <div id="fetchUserResult" class="result-output"></div>
+        <button id="deleteUserButton" type="button">Delete User</button>
+        <div id="deleteUserResult" class="result-output"></div>
+      </div>
+    </div>
+
+    <form id="updateUserForm" onsubmit="return false;">
+      <h3>Update User</h3>
+      
+      <div class="form-group">
+        <label for="updateUserIdInput">User ID:</label>
+        <input type="text" id="updateUserIdInput" placeholder="Enter User ID" required>
+      </div>
+    
+      <div class="form-group">
+        <label for="updateUserNameInput">Name:</label>
+        <input type="text" id="updateUserNameInput" placeholder="Enter Name" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="updateUserMailInput">Email:</label>
+        <input type="email" id="updateUserMailInput" placeholder="Enter Email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="updateUserItemsInput">Items (comma-separated IDs):</label>
+        <input type="text" id="updateUserItemsInput" placeholder="e.g. 1,2,3" required>
+      </div>
+      
+      <button id="updateUserButton" type="button">Update User</button>
+      <div id="updateUserResult" class="result-output"></div>
+    </form>
+
+    <form id="addUserForm" onsubmit="return false;">
+      <h3>Add User</h3>
+      
+      <div class="form-group">
+        <label for="addUserNameInput">Name:</label>
+        <input type="text" id="addUserNameInput" placeholder="Enter Name" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="addUserMailInput">Email:</label>
+        <input type="email" id="addUserMailInput" placeholder="Enter Email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="addUserItemsInput">Items (comma-separated IDs):</label>
+        <input type="text" id="addUserItemsInput" placeholder="e.g. 1,2,3" required>
+      </div>
+      
+      <button id="addUserButton" type="button">Add User</button>
+      <div id="addUserResult" class="result-output"></div>
+    </form>
+  </section>
+
+  <section>
+    <h2>Items</h2>
+    
+    <div>
+      <h3>Fetch All Items</h3>
+      <button id="fetchItemsButton" type="button">Fetch Items</button>
+      <div id="fetchItemsResult" class="result-output"></div>
+      <ul id="itemList"></ul>
+    </div>
+
+    <div>
+      <h3>Actions with Item ID</h3>
+      <div class="form-group">
+        <input type="text" id="itemIdInput" placeholder="Enter Item ID">
+        <button id="fetchItemButton" type="button">Fetch Item</button>
+        <div id="fetchItemResult" class="result-output"></div>
+        <button id="deleteItemButton" type="button">Delete Item</button>
+        <div id="deleteItemResult" class="result-output"></div>
+      </div>
+    </div>
+
+    <form id="updateItemForm" onsubmit="return false;">
+      <h3>Update Item</h3>
+      
+      <div class="form-group">
+        <label for="updateItemIdInput">Item ID:</label>
+        <input type="text" id="updateItemIdInput" placeholder="Enter Item ID" required>
+      </div>
+    
+      <div class="form-group">
+        <label for="updateItemNameInput">Name:</label>
+        <input type="text" id="updateItemNameInput" placeholder="Enter Name" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="updateItemTypeInput">Type:</label>
+        <input type="text" id="updateItemTypeInput" placeholder="Enter Type" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="updateItemEffectInput">Effect:</label>
+        <input type="text" id="updateItemEffectInput" placeholder="Enter Effect" required>
+      </div>
+      
+      <button id="updateItemButton" type="button">Update Item</button>
+      <div id="updateItemResult" class="result-output"></div>
+    </form>
+
+    <form id="addItemForm" onsubmit="return false;">
+      <h3>Add Item</h3>
+      
+      <div class="form-group">
+        <label for="addItemNameInput">Name:</label>
+        <input type="text" id="addItemNameInput" placeholder="Enter Name" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="addItemTypeInput">Type:</label>
+        <input type="text" id="addItemTypeInput" placeholder="Enter Type" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="addItemEffectInput">Effect:</label>
+        <input type="text" id="addItemEffectInput" placeholder="Enter Effect" required>
+      </div>
+      
+      <button id="addItemButton" type="button">Add Item</button>
+      <div id="addItemResult" class="result-output"></div>
+    </form>
+  </section>
+
+</body>
+</html>
