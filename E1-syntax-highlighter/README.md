@@ -27,16 +27,15 @@ For example:
 
 ## Complejidad: 
 ``` 
-tokenfinderhelper/2 (con lista): O(m)
-tokenfinderhelper/2 (lista vacía): O(1)
-tokenfinder/3 (lista vacía): O(n)
-tokenfinder/3 (recursiva): O(k * m)
+Complejidad del programa: O(L * k * m)
+tokenfinderhelper/2 (con lista): Constante
+tokenfinder/3: O(k * m) + O(k)
 tokenidentifier/1: O(L * k * m)
 Donde:
 m = número de patrones de tokens (25 en este código)
-k = número promedio de tokens por línea
+k = número de tokens por línea
 L = número de líneas en el archivo
-n = tamaño del acumulador
+
 
 ```
 
