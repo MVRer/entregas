@@ -25,6 +25,20 @@ For example:
 4. Tokenfinder will split_at the line, by length found and add the token with its corresponding html tags using the atom to an acumulator, which will start forming the html file back again.
 5. The main tokenidentifier will create the file and output the html.
 
+## Complejidad: 
+``` 
+tokenfinderhelper/2 (con lista): O(m)
+tokenfinderhelper/2 (lista vacía): O(1)
+tokenfinder/3 (lista vacía): O(n)
+tokenfinder/3 (recursiva): O(k * m)
+tokenidentifier/1: O(L * k * m)
+Donde:
+m = número de patrones de tokens (25 en este código)
+k = número promedio de tokens por línea
+L = número de líneas en el archivo
+n = tamaño del acumulador
+
+```
 
 ## Files
 - project.exs
