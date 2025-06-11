@@ -1,6 +1,7 @@
 # Programming Multi-Threaded multiple file Parser for Elixir in Elixir and Comparing to Single Threaded
 Mariano - A01029708
 
+GITHUB URL: https://github.com/MVRer/entregas/tree/main/E2-syntax-highlighter
 ## Description 
 
 I coded a multiple file syntax highlighter in Elixir. This is the continuation of the previous part [Part 1](../E1-syntax-highlighter/README.md).
