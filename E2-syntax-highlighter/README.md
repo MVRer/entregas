@@ -126,7 +126,7 @@ Complexity: O(n * L * k * m)
 
 Multi-threaded
 ```
-Complejidad: O((n/t) * L * k * m) + O(n)
+Complexity: O((n/t) * L * k * m) + O(n)
 ```
 - n = Number of files to process
 - L = Number of lines per file (average)
@@ -134,3 +134,5 @@ Complejidad: O((n/t) * L * k * m) + O(n)
 - m = Number of pattern
 
 
+## Reflection
+This technology isn't magic but it does make things faster. But how faster? As we saw Amdahls law is a limit where not everything can be parallelized, there are things that will always run on a single thread but is our job as coders to make it as efficient as possible. We have already reached some limits in terms of CPU speeds, we are not making faster CPUs but bigger, just stacking them on top of each other. It is very important we understand how to parallelize for this specific reason. CPUs won't be able to process information or tasks faster but we can split this tasks so we take advantage of the stacking process I was talking about.   
