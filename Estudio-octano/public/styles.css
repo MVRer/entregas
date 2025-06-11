@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#general-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+#header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex: 1;
+    justify-items: center;;
+
+}
+
+
+
+#mid-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex: 3;
+}
+
+#footer {
+    flex: 3;
+
+}
+#example-grid {
+    display: grid;
+    grid-template-columns: 1fr, 2fr, 1fr;
+
+}
+#example-grid .item {
+    background: rgb(202, 10, 10);
+
+}
